@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemHome">
+
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="dk.ubaya.adv160819001midtermproject.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/itemBook"
+        android:name="dk.ubaya.adv160819001midtermproject.view.BookListFragment"
+        android:label="fragment_book_list"
+        tools:layout="@layout/fragment_book_list" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="dk.ubaya.adv160819001midtermproject.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/itemAbout"
+        android:name="dk.ubaya.adv160819001midtermproject.view.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/itemSettings"
+        android:name="dk.ubaya.adv160819001midtermproject.view.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/itemThesis"
+        android:name="dk.ubaya.adv160819001midtermproject.view.ThesisListFragment"
+        android:label="fragment_thesis_list"
+        tools:layout="@layout/fragment_thesis_list" />
+</navigation>
