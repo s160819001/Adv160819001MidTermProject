@@ -14,7 +14,11 @@
         android:id="@+id/itemBook"
         android:name="dk.ubaya.adv160819001midtermproject.view.BookListFragment"
         android:label="fragment_book_list"
-        tools:layout="@layout/fragment_book_list" />
+        tools:layout="@layout/fragment_book_list" >
+        <action
+            android:id="@+id/actionBookDetail"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="dk.ubaya.adv160819001midtermproject.view.ProfileFragment"
@@ -34,5 +38,42 @@
         android:id="@+id/itemThesis"
         android:name="dk.ubaya.adv160819001midtermproject.view.ThesisListFragment"
         android:label="fragment_thesis_list"
-        tools:layout="@layout/fragment_thesis_list" />
+        tools:layout="@layout/fragment_thesis_list" >
+        <action
+            android:id="@+id/actionThesisDetail"
+            app:destination="@id/thesisDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="dk.ubaya.adv160819001midtermproject.view.BookDetailFragment"
+        android:label="fragment_book_detail"
+        tools:layout="@layout/fragment_book_detail" >
+        <argument
+            android:name="isbn"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionLocationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/locationFragment"
+        android:name="dk.ubaya.adv160819001midtermproject.view.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" >
+        <argument
+            android:name="location"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/thesisDetailFragment"
+        android:name="dk.ubaya.adv160819001midtermproject.view.ThesisDetailFragment"
+        android:label="fragment_thesis_detail"
+        tools:layout="@layout/fragment_thesis_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="year"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -9,11 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dk.ubaya.adv160819001midtermproject.R
-import dk.ubaya.adv160819001midtermproject.viewmodel.ListViewModel
+import dk.ubaya.adv160819001midtermproject.viewmodel.BookListViewModel
 import kotlinx.android.synthetic.main.fragment_book_list.*
 
 class BookListFragment : Fragment() {
-    private lateinit var viewModel: ListViewModel
+    private lateinit var viewModelBook: BookListViewModel
     private val bookListAdapter  = BookListAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,33 +32,33 @@ class BookListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        viewModel.refresh()
+        viewModelBook = ViewModelProvider(this).get(BookListViewModel::class.java)
+        viewModelBook.refresh()
 
         recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = bookListAdapter
 
-        refreshLayout.setOnRefreshListener {
+        refreshLayoutBook.setOnRefreshListener {
             recView.visibility = View.GONE
             txtError.visibility = View.GONE
             progressLoad.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayout.isRefreshing = false
+            viewModelBook.refresh()
+            refreshLayoutBook.isRefreshing = false
         }
 
         observeViewModel()
     }
 
     fun observeViewModel() {
-        viewModel.booksLD.observe(viewLifecycleOwner, Observer {
+        viewModelBook.booksLD.observe(viewLifecycleOwner, Observer {
             bookListAdapter.updateBookList(it)
         })
 
-        viewModel.loadingErrorLD.observe(viewLifecycleOwner, Observer {
+        viewModelBook.loadingErrorLD.observe(viewLifecycleOwner, Observer {
             txtError.visibility = if (it) View.VISIBLE else View.GONE
         })
 
-        viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
+        viewModelBook.loadingLD.observe(viewLifecycleOwner, Observer {
             if(it) {
                 progressLoad.visibility = View.VISIBLE
                 recView.visibility = View.GONE

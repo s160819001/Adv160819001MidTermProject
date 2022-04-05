@@ -10,10 +10,10 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import dk.ubaya.adv160819001midtermproject.model.Book
+import dk.ubaya.adv160819001midtermproject.model.Thesis
 
-class ListViewModel(application: Application): AndroidViewModel(application) {
-    val booksLD = MutableLiveData<List<Book>>()
+class ThesisListViewModel(application: Application): AndroidViewModel(application) {
+    val thesisLD = MutableLiveData<List<Thesis>>()
     val loadingErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
 
@@ -25,13 +25,13 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
         loadingLD.value=true
 
         queue = Volley.newRequestQueue(getApplication())
-        var url = "https://ubaya.fun/native/160819001/anmp/book.php"
+        var url = "https://ubaya.fun/native/160819001/anmp/thesis.php"
 
         val stringRequest = StringRequest(Request.Method.GET, url, {
                 response->
-            val sType = object : TypeToken<List<Book>>(){}.type
-            val result = Gson().fromJson<List<Book>>(response,sType)
-            booksLD.value = result
+            val sType = object : TypeToken<List<Thesis>>(){}.type
+            val result = Gson().fromJson<List<Thesis>>(response,sType)
+            thesisLD.value = result
 
             loadingLD.value=false
             Log.d("showvolley",response.toString())
