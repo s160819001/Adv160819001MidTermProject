@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import dk.ubaya.adv160819001midtermproject.R
 import kotlinx.android.synthetic.main.fragment_thesis_detail.*
 
@@ -27,6 +28,7 @@ class ThesisDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as AppCompatActivity).supportActionBar?.setTitle("Thesis Detail")
         val id = ThesisDetailFragmentArgs.fromBundle(requireArguments()).id
         var year = ThesisDetailFragmentArgs.fromBundle(requireArguments()).year
         val splitid = id.split("-")
