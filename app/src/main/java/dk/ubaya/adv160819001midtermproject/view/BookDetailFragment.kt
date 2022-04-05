@@ -49,7 +49,7 @@ class BookDetailFragment : Fragment() {
             imageViewDetail.loadImage("https://ubaya.fun/native/160819001/anmp/img/${it.isbn}.jpg", progressBarDetail)
 
             var book=it
-            btnBorrow.setOnClickListener {
+            btnFindLocation.setOnClickListener {
                 Navigation.findNavController(it).navigate(BookDetailFragmentDirections.actionLocationFragment(book.location.toString()))
             }
         })
